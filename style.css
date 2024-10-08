@@ -1,0 +1,208 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.content {
+  height: 100vh;
+  background: url(mario-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Playwrite IE", cursive;
+  font-size: 40px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 0px 0px 5px black, 2px 2px 7.5px black, 2px 2px 10px black;
+  color: white;
+}
+
+h2 {
+  font-size: 25px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#board {
+  width: 510px;
+  height: 510px;
+  background: url(soil.png);
+  cursor: url(hammer.png), auto;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-size: cover;
+  border: 3px solid white;
+  border-radius: 25px;
+}
+
+#board div {
+  width: 170px;
+  height: 170px;
+  background-image: url(pipe.png);
+  background-size: cover;
+}
+
+#board div #mole, #board div #plant {
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes popup {
+  0% {
+    transform: translateY(50px);
+    scale: 0.1;
+  }
+  25% {
+    transform: translateY(-5px);
+    scale: 1.1;
+  }
+  75% {
+    transform: translateY(-5px);
+    scale: 1.1;
+  }
+  100% {
+    transform: translateY(50px);
+    scale: 0.1;
+  }
+}
+
+
+@keyframes popin {
+  50% {
+    transform: translateY(35px);
+    scale: 0;
+  }
+}
+
+
+#score {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 32px;
+  font-family: "Concert One";
+  color: #0ace24;
+}
+
+button {
+  width: 100px;
+  color: #ffe609; 
+  background-color: #0ace24; 
+  border:4px solid #01640e;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: "Concert One";
+  font-weight: 400;
+}
+
+button:hover {
+  background-color: #a4a709; /* Darker golden yellow */
+}
+
+button:active {
+  background-color: #9b8402; /* Even darker */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #board {
+    width: 360px;
+    height: 360px;
+  }
+
+  #board div {
+    width: 120px;
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  #board div #mole, #board div #plant {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  #board {
+    width: 240px;
+    height: 240px;
+  }
+
+  #board div {
+    width: 80px;
+    height: 80px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  #board div #mole, #board div #plant {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 320px) {
+  #board {
+    width: 180px;
+    height: 180px;
+  }
+
+  #board div {
+    width: 60px;
+    height: 60px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  #board div #mole, #board div #plant {
+    width: 33px;
+    height: 33px;
+  }
+}

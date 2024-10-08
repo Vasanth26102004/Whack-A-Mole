@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  border: none; /* Fixed the border property */
 }
 
 body {
@@ -21,24 +22,20 @@ body {
 
 h1 {
   font-family: "Playwrite IE", cursive;
-  font-size: 40px;
-  font-optical-sizing: auto;
+  font-size: 2.5em; /* Changed to relative size */
   font-weight: 400;
-  font-style: normal;
   text-shadow: 0px 0px 5px black, 2px 2px 7.5px black, 2px 2px 10px black;
   color: white;
 }
 
 h2 {
-  font-size: 25px;
-  font-optical-sizing: auto;
+  font-size: 1.5em; /* Changed to relative size */
   font-weight: 400;
-  font-style: normal;
 }
 
 #board {
-  width: 510px;
-  height: 510px;
+  width: 495px;
+  height: 495px;
   background: url(soil.png);
   cursor: url(hammer.png), auto;
   margin: 0 auto;
@@ -50,15 +47,16 @@ h2 {
 }
 
 #board div {
-  width: 170px;
-  height: 170px;
+  width: 165px;
+  height: 165px;
   background-image: url(pipe.png);
   background-size: cover;
 }
 
-#board div #mole, #board div #plant {
-  width: 100px;
-  height: 100px;
+#board div #mole,
+#board div #plant {
+  width: 90px;
+  height: 90px;
 }
 
 @keyframes popup {
@@ -80,7 +78,6 @@ h2 {
   }
 }
 
-
 @keyframes popin {
   50% {
     transform: translateY(35px);
@@ -88,20 +85,19 @@ h2 {
   }
 }
 
-
 #score {
   text-align: center;
   margin: 10px 0;
-  font-size: 32px;
+  font-size: 2em; /* Changed to relative size */
   font-family: "Concert One";
   color: #0ace24;
 }
 
 button {
   width: 100px;
-  color: #ffe609; 
-  background-color: #0ace24; 
-  border:4px solid #01640e;
+  color: #ffe609;
+  background-color: #0ace24;
+  border: 4px solid #01640e;
   border-radius: 10px;
   padding: 10px 20px;
   margin: 5px;
@@ -119,6 +115,51 @@ button:active {
   background-color: #9b8402; /* Even darker */
 }
 
+/* Hidden by default */
+.gameOverScreen.hidden {
+  display: none; /* Change to hide the element */
+}
+
+.gameOverScreen {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+.gameOverScreen div {
+  width: 495px;
+  height: 495px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+}
+
+.gameOverScreen h1 {
+  color: rgb(255, 0, 0);
+  text-align: center;
+  font-size: 56px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  animation: fadeIn 10s infinite linear;
+}
+
+/* Animation for game-over fade in */
+@keyframes fadeIn {
+  0% {
+    transform: translateX(-150%); /* Added px unit */
+  }
+  100% {
+    transform: translateX(150%); /* Added px unit */
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   #board {
@@ -132,18 +173,20 @@ button:active {
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 2em; /* Changed to relative size */
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 1.25em; /* Changed to relative size */
   }
 
   button {
     font-size: 16px;
     padding: 8px 16px;
   }
-  #board div #mole, #board div #plant {
+  
+  #board div #mole,
+  #board div #plant {
     width: 65px;
     height: 65px;
   }
@@ -161,24 +204,30 @@ button:active {
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 1.5em; /* Changed to relative size */
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 1.125em; /* Changed to relative size */
   }
 
   button {
     font-size: 14px;
     padding: 6px 12px;
   }
-  #board div #mole, #board div #plant {
+  
+  #board div #mole,
+  #board div #plant {
     width: 45px;
     height: 45px;
   }
 }
 
 @media (max-width: 320px) {
+  .content {
+    height: 100vh;
+  }
+
   #board {
     width: 180px;
     height: 180px;
@@ -190,18 +239,21 @@ button:active {
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 1.25em; /* Changed to relative size */
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 1em; /* Changed to relative size */
   }
 
   button {
+    width: 80px;
     font-size: 12px;
     padding: 5px 10px;
   }
-  #board div #mole, #board div #plant {
+  
+  #board div #mole,
+  #board div #plant {
     width: 33px;
     height: 33px;
   }

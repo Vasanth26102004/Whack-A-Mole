@@ -1,5 +1,6 @@
 const board = document.getElementById("board");
 let score = document.getElementById("score");
+let gameOverScreen = document.getElementsByClassName('gameOverScreen')[0]; // Access the first element
 let scoreValue = 0;
 let currMoleTile;
 let currPlantTile;
@@ -14,20 +15,23 @@ let plantInterval;
 window.onload = function () {
   setGame();
   score.textContent = "SCORE: " + scoreValue.toString();
+  gameOverScreen.classList.add('hidden'); 
 };
 
 function Start() {
   if (!running) {
+    scoreValue = 0;
+    GameOver = false;
     running = true;
-    moleInterval = setInterval(setMole, moleTime); // Start mole interval
-    plantInterval = setInterval(setPlant, plantTime); // Start plant interval
+    gameOverScreen.classList.add('hidden'); 
+    moleInterval = setInterval(setMole, moleTime);
+    plantInterval = setInterval(setPlant, plantTime); 
 
     if (currMoleTile && currMoleTile.querySelector("#mole")) {
       currMoleTile.querySelector("#mole").style.animationPlayState = "running";
     }
     if (currPlantTile && currPlantTile.querySelector("#plant")) {
-      currPlantTile.querySelector("#plant").style.animationPlayState =
-        "running";
+      currPlantTile.querySelector("#plant").style.animationPlayState = "running";
     }
 
     console.log("Game started");
@@ -88,6 +92,7 @@ function setMole() {
 
   mole.addEventListener("click", () => {
     if (!GameOver && running) {
+      // Add logic if needed when the mole is clicked
     }
   });
 }
@@ -115,11 +120,17 @@ function setPlant() {
   plant.style.animationPlayState = "running";
 }
 
+function showGameOver() {
+  gameOverScreen.classList.remove('hidden'); // Show the game over screen
+  
+  clearInterval(moleInterval);
+  clearInterval(plantInterval);
+}
+
 function selectTile() {
   if (GameOver || !running) return;
 
   if (this == currMoleTile) {
-    mole.style.animation = "popin 1s ease-out";
     scoreValue += 10;
     score.textContent = "SCORE: " + scoreValue.toString();
   } else if (this == currPlantTile) {
@@ -128,7 +139,9 @@ function selectTile() {
     running = false;
     clearInterval(moleInterval);
     clearInterval(plantInterval);
+    showGameOver();
 
+    // Stop mole and plant animations
     if (document.getElementById("mole")) {
       document.getElementById("mole").style.animation = "none";
     }
